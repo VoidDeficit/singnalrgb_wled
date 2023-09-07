@@ -153,10 +153,37 @@ Item {
 					color: "#3baf29"
 					radius: theme.radius
 				}
+				SIconButton{
+                    id: iconButton
+                    height: 40
+                    width: 40
+                    source: "qrc:/images/Resources/Icons/Material/settings_white_48dp.svg"
+                    opacity: .4
+                    anchors{
+                        right: parent.right
+                    }
+                    
+                    onClicked: {
+                        menu.open() 
+                    }
+                }
 
+                SContextMenu{
+                    id: menu
+                    //y: parent.width - menu.height
+                    x: parent.width - 10
+                    visible: menu.opened
+                    MenuItem{
+                        text: "Forget Controller"
+                        onTriggered: {
+                            console.log(`Removing Controller ${controller.id} from IP cache.`)
+                            discovery.forgetController(controller.id)
+                        }
+                    }
+                }
 				Column {
 					id: content
-					width: parent.width
+					width: childrenRect.width + content.padding * 2
 					spacing: 10
 					padding: 10
 

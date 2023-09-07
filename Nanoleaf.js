@@ -548,7 +548,19 @@ export function DiscoveryService() {
 			service.log(`Updated: ${controller.name}`);
 		}
 	};
-
+	this.forgetController = function(id){
+		// Remove from ip cache
+		this.cache.Remove(id);
+		// remove from UI
+		for(const controller of service.controllers){
+			if(controller.id === id){
+				service.suppressController(controller);
+				service.removeController(controller);
+				
+				return;
+			}
+		}
+	}
 	// this.ValidateIPAddress = function(ip){
 	// 	const port = 16021;
 	// 	this.currentlyValidatingIP = true;
