@@ -1,4 +1,4 @@
-export function Name() { return "Nanoleaf"; }
+export function Name() { return "Wled Custom"; }
 export function Version() { return "1.1.0"; }
 export function Type() { return "network"; }
 export function Publisher() { return "WhirlwindFX"; }
